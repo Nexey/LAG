@@ -1,18 +1,19 @@
-#Groupe <span style="color:#F0E68C">LAG</span>
-###Repository du projet Symfony
+# Groupe LAG
+
+### Repository du projet Symfony
 
 # Membres du groupe
 
-####<span style="color:#F0E68C">L</span>iam Davies
+#### Liam Davies
 
-####<span style="color:#F0E68C">A</span>lexandre Conrad
+#### Alexandre Conrad
 
-####<span style="color:#F0E68C">G</span>eoffrey Bauqué
+#### Geoffrey Bauqué
 
 # Installation du projet :
 * Installez un serveur local
     * Ceci peut se faire avec la commande "php -S localhost:8000" par exemple
-      * ```bat
+        * ```bat
         cd path/to/your/project
         php -S localhost:8000
         ```
@@ -33,7 +34,7 @@
     * Notes : Si vous utilisez Wamp, référez-vous à la documentation pour trouver le bon fichier php.ini
 * Installez Symfony CLI : [Symfony](https://symfony.com/download)
 * Installez Composer : [Composer](https://getcomposer.org/download/)
-* Vérifiez les dépendances de Symfony : 
+* Vérifiez les dépendances de Symfony :
     * ```symfony
       Symfony check:requirements
       ```

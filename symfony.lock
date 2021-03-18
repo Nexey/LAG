@@ -23,6 +23,9 @@
     "doctrine/common": {
         "version": "3.1.1"
     },
+    "doctrine/data-fixtures": {
+        "version": "1.5.0"
+    },
     "doctrine/dbal": {
         "version": "2.12.1"
     },
@@ -39,6 +42,18 @@
             "./config/packages/prod/doctrine.yaml",
             "./src/Entity/.gitignore",
             "./src/Repository/.gitignore"
+        ]
+    },
+    "doctrine/doctrine-fixtures-bundle": {
+        "version": "3.0",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "3.0",
+            "ref": "e5b542d4ef47d8a003c91beb35650c76907f7e53"
+        },
+        "files": [
+            "./src/DataFixtures/AppFixtures.php"
         ]
     },
     "doctrine/doctrine-migrations-bundle": {
@@ -92,9 +107,6 @@
     },
     "laminas/laminas-zendframework-bridge": {
         "version": "1.2.0"
-    },
-    "monolog/monolog": {
-        "version": "2.2.0"
     },
     "nikic/php-parser": {
         "version": "v4.10.4"
@@ -286,24 +298,6 @@
     },
     "symfony/mime": {
         "version": "v5.2.5"
-    },
-    "symfony/monolog-bridge": {
-        "version": "v5.2.5"
-    },
-    "symfony/monolog-bundle": {
-        "version": "3.3",
-        "recipe": {
-            "repo": "github.com/symfony/recipes",
-            "branch": "master",
-            "version": "3.3",
-            "ref": "d7249f7d560f6736115eee1851d02a65826f0a56"
-        },
-        "files": [
-            "./config/packages/dev/monolog.yaml",
-            "./config/packages/prod/deprecations.yaml",
-            "./config/packages/prod/monolog.yaml",
-            "./config/packages/test/monolog.yaml"
-        ]
     },
     "symfony/notifier": {
         "version": "5.0",

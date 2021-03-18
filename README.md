@@ -138,4 +138,4 @@ Créer les tables d'une base de données à partir des entities du projet :
 
 [Dashboards](https://symfony.com/doc/current/bundles/EasyAdminBundle/dashboards.html)
 
-[Create your User Class](https://symfony.com/doc/current/security.html#a-create-your-user-class)
+[Translation](https://symfony.com/doc/current/translation.html)

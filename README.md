@@ -135,3 +135,5 @@ Créer les tables d'une base de données à partir des entities du projet :
 [Creating and Using Templates](https://symfony.com/doc/4.2/templating.html)
 
 [How to Customize Form Rendering](https://symfony.com/doc/4.0/form/form_customization.html#form-rendering-basics)
+
+[Dashboards](https://symfony.com/doc/current/bundles/EasyAdminBundle/dashboards.html)

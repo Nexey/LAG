@@ -19,4 +19,6 @@
 /.idea/*.iws
 /.idea/workspace.xml
 /.idea/tasks.xml
+/.idea
+/.idea/*
 ###< intellIJ idea ###

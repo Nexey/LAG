@@ -31,6 +31,8 @@ class UserFixtures extends Fixture
         $this->roles[] = 'ROLE_ADMIN';
         $user->setRoles($this->roles);
 
+        $user->setIsActive(false);
+
         $manager->persist($user);
         $manager->flush();
     }

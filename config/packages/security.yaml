@@ -34,7 +34,7 @@ security:
     # Note: Only the *first* access control that matches will be used
     access_control:
         # allow unauthenticated users to access the login form
-        - { path: ^/admin/login, roles: PUBLIC_ACCESS }
+        - { path: ^/login, roles: PUBLIC_ACCESS }
 
         # but require authentication for all other admin routes
         - { path: ^/admin, roles: ROLE_ADMIN }

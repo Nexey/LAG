@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a5a554d0-0270-4d0a-b645-e4e3bbf27642" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -141,7 +141,6 @@
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
     <property name="aspect.path.notification.shown" value="true" />
@@ -153,7 +152,10 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="AndroidSdkUpdater" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.phpOptions" />
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -165,7 +167,7 @@
       <updated>1616054119877</updated>
       <workItem from="1616054122584" duration="745000" />
       <workItem from="1616054890120" duration="2480000" />
-      <workItem from="1616057409839" duration="13000" />
+      <workItem from="1616057409839" duration="332000" />
     </task>
     <task id="LOCAL-00001" summary="[FIRST COMMIT] Initialisation README.md">
       <created>1616056524208</created>
@@ -188,7 +190,14 @@
       <option name="project" value="LOCAL" />
       <updated>1616057374717</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="[CORRECTION] Readme mieux affiché">
+      <created>1616057643643</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1616057643643</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -199,6 +208,7 @@
     <MESSAGE value="[FIRST COMMIT] Initialisation README.md" />
     <MESSAGE value="[ADD] Symfony initialisé" />
     <MESSAGE value="[ADD] Fichiers de Symfony" />
-    <option name="LAST_COMMIT_MESSAGE" value="[ADD] Fichiers de Symfony" />
+    <MESSAGE value="[CORRECTION] Readme mieux affiché" />
+    <option name="LAST_COMMIT_MESSAGE" value="[CORRECTION] Readme mieux affiché" />
   </component>
 </project>

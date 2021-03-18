@@ -13,10 +13,10 @@
 # Installation du projet :
 * Installez un serveur local
     * Ceci peut se faire avec la commande "php -S localhost:8000" par exemple
-        * ```bat
-        cd path/to/your/project
-        php -S localhost:8000
-        ```
+        * ```console
+          cd path/to/your/project
+          php -S localhost:8000
+          ```
     * Il est cependant conseillé d'installer Wamp ou tout autre solution
         * [Wamp](https://www.wampserver.com/)
 

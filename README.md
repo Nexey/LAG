@@ -11,8 +11,8 @@
 #### Geoffrey Bauqué
 
 # Installation du projet :
-* Installez Symfony CLI : [Symfony](https://symfony.com/download)
-* Installez Composer : [Composer](https://getcomposer.org/download/)
+* Installez [Symfony CLI](https://symfony.com/download)
+* Installez [Composer](https://getcomposer.org/download/)
 * Clonez ce git : ```git clone git@github.com:Nexey/LAG.git```
 * Installez un serveur local
     * Ceci peut se faire avec la commande "php -S localhost:8000" par exemple
@@ -20,8 +20,7 @@
           cd path/to/your/project
           php -S localhost:8000
           ```
-    * Il est cependant conseillé d'installer Wamp ou tout autre solution
-        * [Wamp](https://www.wampserver.com/)
+    * Il est cependant conseillé d'installer [Wamp](https://www.wampserver.com/) ou tout autre solution
     
     * Il existe aussi une commande avec le client Symfony qui démarre un serveur général (pas seulement limité à Symfony) :
         * ```console
@@ -49,7 +48,7 @@
     * Installez les dépendances de ce projet, exclues de Github (elles seront téléchargées dans le dossier /vendor)
         * ```console
           cd path/to/your/project
-          composer install
+          composer update
           ```
 #### Le projet est désormais installé.
 

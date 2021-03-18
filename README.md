@@ -39,4 +39,5 @@
       Symfony check:requirements
       ```
     * Note : Si vous utilisez Wamp, il se peut que la commande vous demande de configurer realpath_cache_size et d'installer un accélérateur php. Ceci s'explique par la différence entre le php utilisé pour la version console de Wamp, et la version serveur de Wamp. Vous pouvez ignorer ce message pour le moment, nous ferons un php_info plus tard pour vérifier.
-    
+    * Clonez ce github ```git clone git@github.com:Nexey/LAG.git```
+    * Installez les dépendances de Symfony ```composer install```

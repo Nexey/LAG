@@ -91,3 +91,10 @@ Créer les tables d'une base de données à partir des entities du projet :
    ```php
    php bin/console doctrine:migrations:migrate
    ```
+
+# Références :
+[Create your first page in Symfony](https://symfony.com/doc/current/page_creation.html)
+
+[Twig for Template Designers](https://twig.symfony.com/doc/3.x/templates.html)
+
+[Creating and Using Templates](https://symfony.com/doc/4.2/templating.html)

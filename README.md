@@ -15,14 +15,8 @@
 * Installez [Composer](https://getcomposer.org/download/)
 * Clonez ce git : ```git clone git@github.com:Nexey/LAG.git```
 * Installez un serveur local
-    * Ceci peut se faire avec la commande "php -S localhost:8000" par exemple
-        * ```console
-          cd path/to/your/project
-          php -S localhost:8000
-          ```
-    * Il est cependant conseillé d'installer [Wamp](https://www.wampserver.com/) ou tout autre solution
-    
-    * Il existe aussi une commande avec le client Symfony qui démarre un serveur général (pas seulement limité à Symfony) :
+    * Il est conseillé d'installer [Wamp](https://www.wampserver.com/) pour avoir une base de donnée locale
+    * Il faut ensuite exécuter une commande avec le client Symfony qui démarre un serveur général (pas seulement limité à Symfony) :
         * ```console
           cd path/to/your/project
           symfony server:start

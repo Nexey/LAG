@@ -86,6 +86,13 @@ Créer les tables d'une base de données à partir des entities du projet :
    php bin/console doctrine:migrations:migrate
    ```
 # Liste des tâches
+
+<a href="/pdfs/présentation.pdf">Présentation</a>
+
+<a href="/pdfs/spécifications.pdf">Spécifications</a>
+
+<a href="/pdfs/données.pdf">Données</a>
+
 ## Page d'accueil **Conrad Alexandre** _alias_ [@Alexandre](https://github.com/AlexandreConrad)
 * Accessible à la racine de l'application
 * Doit afficher "Bienvenue sur l'application F & BC - RENTAB"

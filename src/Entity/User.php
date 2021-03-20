@@ -13,6 +13,11 @@ use Symfony\Component\Security\Core\User\UserInterface;
  */
 class User implements UserInterface
 {
+    public function __construct(){
+        $this->roles = array('ROLE_USER');
+        $this->isActive = true;
+    }
+
     /**
      * @ORM\Id
      * @ORM\GeneratedValue

@@ -37,22 +37,22 @@ class DashboardController extends AbstractDashboardController
     public function configureMenuItems(): iterable
     {
         return [
-            MenuItem::linkToDashboard('Dashboard', 'fa fa-home'),
+            MenuItem::linkToDashboard('Configuration', 'fa fa-home'),
 
-            MenuItem::section('Role assignment'),
-            MenuItem::linkToCrud('Users', 'fa fa-user', User::class),
+            MenuItem::section('Gestion des rôles'),
+            MenuItem::linkToCrud('Utilisateurs', 'fa fa-user', User::class),
 
-            MenuItem::section('Fournitures'),
-            MenuItem::linkToCrud('Fournitures', 'fa fa-user', Fourniture::class),
+            MenuItem::section('Gestion des fournitures'),
+            MenuItem::linkToCrud('Fournitures', 'fas fa-couch', Fourniture::class),
 
-            MenuItem::section('Gamme'),
-            MenuItem::linkToCrud('Gamme', 'fa fa-user', Gamme::class),
+            MenuItem::section('Gestion des gammes'),
+            MenuItem::linkToCrud('Gammes', 'fa fa-user', Gamme::class),
 
-            MenuItem::section('Produit'),
-            MenuItem::linkToCrud('Produit', 'fa fa-user', Produit::class),
+            MenuItem::section('Gestion des produits'),
+            MenuItem::linkToCrud('Produits', 'fa fa-user', Produit::class),
 
-            MenuItem::section('ProduitFourniture'),
-            MenuItem::linkToCrud('ProduitFourniture', 'fa fa-user', ProduitFourniture::class),
+            MenuItem::section('Gestion des produits / fournitures'),
+            MenuItem::linkToCrud('Produits et fournitures', 'fa fa-user', ProduitFourniture::class),
         ];
         // yield MenuItem::linkToCrud('The Label', 'fas fa-list', EntityClass::class);
     }

@@ -26,21 +26,19 @@ class UserCrudController extends AbstractCrudController
     //*
     public function configureFields(string $pageName): iterable
     {
+        $roles = ArrayField::new('roles');
         return [
-            ArrayField::new('roles'),
+            EmailField::new('email')->onlyOnIndex(),
+            $roles,
         ];
     }
     //*/
 
     public function configureActions(Actions $actions): Actions
     {
+
         return $actions
-            ->remove(Crud::PAGE_INDEX, Action::NEW);
-    }
-
-
-    public function createEntity(string $entityFqcn): User
-    {
-        return parent::createEntity($entityFqcn);
+            ->remove(Crud::PAGE_INDEX, Action::NEW)
+            ->remove(Crud::PAGE_INDEX, Action::DELETE);
     }
 }

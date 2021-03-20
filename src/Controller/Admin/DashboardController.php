@@ -24,6 +24,7 @@ class DashboardController extends AbstractDashboardController
         $routeBuilder = $this->get(AdminUrlGenerator::class);
         //return $this->redirect($routeBuilder->setController(UserCrudController::class)->generateUrl());
 
+        return $this->render("security/dashboard/dashboard.html.twig");
         return parent::index();
     }
 
@@ -37,7 +38,8 @@ class DashboardController extends AbstractDashboardController
     public function configureMenuItems(): iterable
     {
         return [
-            MenuItem::linkToDashboard('Configuration', 'fa fa-home'),
+            MenuItem::linkToDashboard('Configuration', 'fas fa-wrench'),
+            MenuItem::linkToRoute("Home Page", "fa fa-home", "home_page"),
 
             MenuItem::section('Gestion des rôles'),
             MenuItem::linkToCrud('Utilisateurs', 'fa fa-user', User::class),

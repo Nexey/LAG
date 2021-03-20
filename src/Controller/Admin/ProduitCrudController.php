@@ -4,6 +4,7 @@ namespace App\Controller\Admin;
 
 use App\Entity\Produit;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 
 class ProduitCrudController extends AbstractCrudController
 {
@@ -12,6 +13,14 @@ class ProduitCrudController extends AbstractCrudController
         return Produit::class;
     }
 
+    public function configureCrud(Crud $crud): Crud
+    {
+        return $crud
+            ->setSearchFields(['nom', 'prix_vente'])
+            ->setPaginatorPageSize(30)
+            ->setPaginatorRangeSize(4)
+            ;
+    }
     /*
     public function configureFields(string $pageName): iterable
     {

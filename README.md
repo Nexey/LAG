@@ -13,6 +13,9 @@
 # Installation du projet :
 * Installez [Symfony CLI](https://symfony.com/download)
 * Installez [Composer](https://getcomposer.org/download/)
+* Installez [Node.js](https://nodejs.org/en/download/) 
+* Installez [YARN](https://classic.yarnpkg.com/en/docs/install/#windows-stable) (optionnel, mais recommandé).
+
 * Clonez ce git : ```git clone git@github.com:Nexey/LAG.git```
 * Installez un serveur local
     * Il est conseillé d'installer [Xamp](https://www.apachefriends.org/fr/download.html) ou [Wamp](https://www.wampserver.com/) pour avoir une base de donnée locale, mais n'activez que le serveur apache ainsi que la base de données
@@ -43,6 +46,7 @@
         * ```console
           cd path/to/your/project
           composer update
+          yarn install --force
           ```
 #### Le projet est désormais installé.
 
@@ -91,6 +95,8 @@ Il est parfois nécessaire d'utiliser du JavaScript pour les pages, ou encore de
 
 Symfony 5.2 propose d'utiliser [Encore](https://symfony.com/doc/current/frontend.html) pour gérer les [Webpacks](https://webpack.js.org/).
 
+C'est très utile pour gérer Bootstrap, installé via YARN. Le fichier "global.scss" se charge d'inclure bootstrap, et Encore génèrera le fichier final avec toutes les dépendances.
+
 Voici les étapes pour inclure un fichier JavaScript / CSS :
 
 * Générer un fichier .js dans le dossier"/assets", et un fichier .css dans "/assets/styles". Ces fichiers peuvent être dans des sous-dossiers. Par exemple, nous avons le fichier "app.js" et le fichier "app.css".
@@ -131,8 +137,6 @@ Voici les étapes pour inclure un fichier JavaScript / CSS :
 Nous sommes presque prêts à écrire notre style et notre code JavaScript / jQuery dans nos nouveaux fichiers.
 
 Ils n'apparaitront pas d'eux-mêmes, car il faut préalablement compiler ces fichiers.
-
-Ceci se fait en installant [NPM](https://nodejs.org/en/download/) et [YARN](https://classic.yarnpkg.com/en/docs/install/#windows-stable) (optionnel, mais recommandé).
 
 Nous avons deux façons de compiler les fichiers.
 

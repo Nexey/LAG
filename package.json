@@ -6,6 +6,9 @@
     "jquery": "^3.6.0"
   },
   "devDependencies": {
+    "bootstrap": "^4.6.0",
+    "sass": "^1.32.8",
+    "sass-loader": "11.0.0",
     "webpack-notifier": "1.6.0"
   }
 }

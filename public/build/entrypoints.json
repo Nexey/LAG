@@ -9,16 +9,6 @@
       "css": [
         "/build/app.css"
       ]
-    },
-    "about": {
-      "js": [
-        "/build/runtime.js",
-        "/build/vendors-node_modules_jquery_dist_jquery_js.js",
-        "/build/about.js"
-      ],
-      "css": [
-        "/build/about.css"
-      ]
     }
   }
 }

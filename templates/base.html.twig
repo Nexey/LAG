@@ -1,22 +1,23 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Welcome!{% endblock %}</title>
 
-        {% block stylesheets %}
-        {% endblock %}
+    {% block stylesheets %}
+    {% endblock %}
 
-        {% block javascripts %}
-        {% endblock %}
+    {% block javascripts %}
+    {% endblock %}
 
-        <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
-        <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    </head>
-    <body>
-        {% include "navbar.html.twig" %}
-        {% block body %}
+    <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+{% include "navbar.html.twig" %}
+{% block body %}
 
-        {% endblock %}
-    </body>
+{% endblock %}
+{% include "footer.html.twig" %}
+</body>
 </html>

@@ -1,5 +1,5 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-5g">
-    <a class="navbar-brand" href="#">Navbar</a>
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-5">
+    <a class="navbar-brand" href="#">LAG</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -7,15 +7,15 @@
     <div class="collapse navbar-collapse" id="navbarNav">
         {% block navbar %}
             <ul class="navbar-nav">
-                <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+                <li class="nav-item"><a class="nav-link {% if app.request.pathinfo == '/' %}active{% endif %}" href="/">Accueilg</a></li>
                 {% if app.user %}
-                    <li lass="nav-item"><a class="nav-link" href="/logout">Logout</a></li>
+                    <li lass="nav-item"><a class="nav-link {% if app.request.pathinfo == '/logout' %}active{% endif %}" href="/logout">Déconnexion</a></li>
                 {% else %}
-                    <li lass="nav-item"><a class="nav-link" href="/login">Login</a></li>
-                    <li lass="nav-item"><a class="nav-link" class="nav-link" href="/register">Register</a></li>
+                    <li lass="nav-item"><a class="nav-link {% if app.request.pathinfo == '/login' %}active{% endif %}" href="/login">Connexion</a></li>
+                    <li lass="nav-item"><a class="nav-link {% if app.request.pathinfo == '/register' %}active{% endif %}" class="nav-link" href="/register">Inscription</a></li>
                 {% endif %}
                 {% if is_granted('ROLE_ADMIN') %}
-                    <li lass="nav-item"><a class="nav-link" href="/admin">Dashboard</a></li>
+                    <li lass="nav-item"><a class="nav-link {% if app.request.pathinfo == '/admin' %}active{% endif %}" href="/admin">Tableau de bord</a></li>
                 {% endif %}
             </ul>
         {% endblock %}

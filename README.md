@@ -104,7 +104,7 @@ Voici les étapes pour inclure un fichier JavaScript / CSS :
 * Importer le fichier .css depuis le fichier .js, en suivant l'exemple  :
     * ```javascript
       // assets/global.js
-      import './styles/globa.scss';
+      import './styles/global.scss';
       ```
 * Éditer le fichier "webpack.config.js" se trouvant à la racine, avec une nouvelle "entry" :
     * ```javascript

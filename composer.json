@@ -39,6 +39,7 @@
         "symfony/validator": "5.2.*",
         "symfony/web-link": "5.2.*",
         "symfony/yaml": "5.2.*",
+        "twbs/bootstrap": "^4.6",
         "twig/extra-bundle": "^2.12|^3.0",
         "twig/twig": "^2.12|^3.0"
     },
@@ -81,7 +82,9 @@
             "assets:install %PUBLIC_DIR%": "symfony-cmd"
         },
         "post-install-cmd": [
-            "@auto-scripts"
+            "@auto-scripts",
+            "rm -rf public/bootstrap",
+            "cp -R vendor/twbs/bootstrap/dist public/bootstrap"
         ],
         "post-update-cmd": [
             "@auto-scripts"

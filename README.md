@@ -14,7 +14,7 @@
 * Installez [Symfony CLI](https://symfony.com/download)
 * Installez [Composer](https://getcomposer.org/download/)
 * Installez [Node.js](https://nodejs.org/en/download/) 
-* Installez [YARN](https://classic.yarnpkg.com/en/docs/install/#windows-stable) (optionnel, mais recommandé).
+* Installez [Yarn](https://classic.yarnpkg.com/en/docs/install/#windows-stable) (optionnel, mais recommandé).
 
 * Clonez ce git : ```git clone git@github.com:Nexey/LAG.git```
 * Installez un serveur local
@@ -95,15 +95,15 @@ Il est parfois nécessaire d'utiliser du JavaScript pour les pages, ou encore de
 
 Symfony 5.2 propose d'utiliser [Encore](https://symfony.com/doc/current/frontend.html) pour gérer les [Webpacks](https://webpack.js.org/).
 
-C'est très utile pour gérer Bootstrap, installé via YARN. Le fichier "global.scss" se charge d'inclure bootstrap, et Encore génèrera le fichier final avec toutes les dépendances.
+C'est très utile pour gérer Bootstrap, installé via Yarn. Le fichier "global.scss" se charge d'inclure bootstrap, et Encore génèrera le fichier final avec toutes les dépendances.
 
 Voici les étapes pour inclure un fichier JavaScript / CSS :
 
-* Générer un fichier .js dans le dossier"/assets", et un fichier .css dans "/assets/styles". Ces fichiers peuvent être dans des sous-dossiers. Par exemple, nous avons le fichier "app.js" et le fichier "app.css".
+* Générer un fichier .js dans le dossier"/assets", et un fichier .css dans "/assets/styles". Ces fichiers peuvent être dans des sous-dossiers. Par exemple, nous avons le fichier "global.js" et le fichier "global.scss".
 * Importer le fichier .css depuis le fichier .js, en suivant l'exemple  :
     * ```javascript
-      // assets/app.js
-      import './styles/app.css';
+      // assets/global.js
+      import './styles/globa.scss';
       ```
 * Éditer le fichier "webpack.config.js" se trouvant à la racine, avec une nouvelle "entry" :
     * ```javascript
@@ -113,7 +113,7 @@ Voici les étapes pour inclure un fichier JavaScript / CSS :
         // ...
         
         // ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓
-        .addEntry('app', './assets/app.js')
+        .addEntry('global', './assets/global.js')
       
         // ...
       ```
@@ -124,13 +124,13 @@ Voici les étapes pour inclure un fichier JavaScript / CSS :
       {# ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ #}
       {% block javascripts %}
           {{ parent() }}
-          {{ encore_entry_script_tags('app') }}
+          {{ encore_entry_script_tags('global') }}
       {% endblock %}
       
       {# ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ #}
       {% block stylesheets %}
           {{ parent() }}
-          {{ encore_entry_link_tags('app') }}
+          {{ encore_entry_link_tags('global') }}
       {% endblock %}
       ```
       

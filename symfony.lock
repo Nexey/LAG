@@ -520,7 +520,7 @@
             "ref": "9399a0bfc6ee7a0c019f952bca46d6a6045dd451"
         },
         "files": [
-            "./assets/app.js",
+            "./assets/global.js",
             "./assets/controllers/hello_controller.js",
             "./assets/styles/app.css",
             "./config/packages/assets.yaml",

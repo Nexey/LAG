@@ -3,18 +3,11 @@
 {% block title %}Hello HomePageController!{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
-
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'F:/Softwares/wamp64/www/TPCompGenieLogiciel/LAG/src/Controller/HomePageController.php'|file_link(0) }}">src/Controller/HomePageController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'F:/Softwares/wamp64/www/TPCompGenieLogiciel/LAG/templates/home_page/index.html.twig'|file_link(0) }}">templates/home_page/index.html.twig</a></code></li>
-    </ul>
-</div>
+    <div class="container" style="text-align: center">
+        <h1>Bienvenue sur l'application F & BC - RENTAB</h1>
+        <p>Le but de cette application est de calculer la rentabilité de nos différentes gammes de produits</p>
+        <p>Pour vous rendre sur la page de calcul de bénéfice de chacune de nos gammes de produits, <a href="#">cliquez ici</a>.</p>
+        <p>Elle permet également de visualiser les prix maximum autorisés pour faire du bénéfice sur nos différentes gammes</p>
+        <p>Pour vous rendre sur la page de calcul des prix maximum pour être rentable, <a href="#">cliquez ici</a>.</p>
+    </div>
 {% endblock %}

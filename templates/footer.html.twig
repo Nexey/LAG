@@ -1,6 +1,4 @@
-<div id="footer">
-    {% block footer %}
-        &copy; Copyright 2011 by <a href="http://domain.invalid/">you</a>.
-
-    {% endblock %}
-</div>
+<footer class="text-center p-3 bg-light mt-5">
+    {% if app.request.pathinfo != '/about' %}<a href="/about">À propos</a>{% endif %}
+    <p>Copyright © 2021 BAUQUE Geoffrey, CONRAD Alexandre et DAVIES Liam</p>
+</footer>

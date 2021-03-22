@@ -1,0 +1,11 @@
+{
+  "name": "LAG",
+  "version": "1.0.0",
+  "dependencies": {
+    "@symfony/webpack-encore": "^1.1.2",
+    "jquery": "^3.6.0"
+  },
+  "devDependencies": {
+    "webpack-notifier": "1.6.0"
+  }
+}

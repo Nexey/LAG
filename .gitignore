@@ -23,4 +23,5 @@
 /.idea
 /.idea/*
 /.php-version
+/node_modules/
 ###< intellIJ idea ###

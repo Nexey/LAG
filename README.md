@@ -85,6 +85,70 @@ Créer les tables d'une base de données à partir des entities du projet :
    ```php
    php bin/console doctrine:migrations:migrate
    ```
+   
+# Éditer le style et les scripts
+Il est parfois nécessaire d'utiliser du JavaScript pour les pages, ou encore de pouvoir inclure un fichier CSS.
+
+Symfony 5.2 propose d'utiliser [Encore](https://symfony.com/doc/current/frontend.html) pour gérer les [Webpacks](https://webpack.js.org/).
+
+Voici les étapes pour inclure un fichier JavaScript / CSS :
+
+* Générer un fichier .js dans le dossier"/assets", et un fichier .css dans "/assets/styles". Ces fichiers peuvent être dans des sous-dossiers. Par exemple, nous avons le fichier "app.js" et le fichier "app.css".
+* Importer le fichier .css depuis le fichier .js, en suivant l'exemple  :
+    * ```javascript
+      // assets/app.js
+      import './styles/app.css';
+      ```
+* Éditer le fichier "webpack.config.js" se trouvant à la racine, avec une nouvelle "entry" :
+    * ```javascript
+      // webpack.config.js
+      // ...
+      Encore
+        // ...
+        
+        // ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓
+        .addEntry('app', './assets/app.js')
+      
+        // ...
+      ```
+* Éditer le fichier twig d'un controller pour rajouter le code selon l'exemple suivant :
+    * ```twig
+      {% extends 'base.html.twig' %}
+      
+      {# ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ #}
+      {% block javascripts %}
+          {{ parent() }}
+          {{ encore_entry_script_tags('app') }}
+      {% endblock %}
+      
+      {# ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ #}
+      {% block stylesheets %}
+          {{ parent() }}
+          {{ encore_entry_link_tags('app') }}
+      {% endblock %}
+      ```
+      
+Nous sommes presque prêts à écrire notre style et notre code JavaScript / jQuery dans nos nouveaux fichiers.
+
+Ils n'apparaitront pas d'eux-mêmes, car il faut préalablement compiler ces fichiers.
+
+Ceci se fait en installant [NPM](https://nodejs.org/en/download/) et [YARN](https://classic.yarnpkg.com/en/docs/install/#windows-stable) (optionnel, mais recommandé).
+
+Nous avons deux façons de compiler les fichiers.
+
+#### Pour compiler les fichiers une seule fois
+```npm
+yarn encore dev
+```
+
+#### Pour continuellement compiler les fichiers (recommandé)
+```npm
+yarn encore dev --watch
+```
+Ces deux commandes vont générer un bundle "build" dans le dossier "/Public", faisant le lien avec les fichiers du dossier "/assets".
+
+### La modification d'une entry dans le fichier "webpack.config.js" nécessite soit une nouvelle compilation, soit le redémarrage de la compilation continue
+
 # Liste des tâches
 
 <a href="/pdfs/présentation.pdf">Présentation</a>

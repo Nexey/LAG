@@ -47,6 +47,7 @@
           cd path/to/your/project
           composer update
           yarn install --force
+          yarn encore dev
           ```
 #### Le projet est désormais installé.
 

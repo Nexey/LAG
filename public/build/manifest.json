@@ -1,8 +1,8 @@
 {
   "build/app.css": "/build/app.css",
   "build/app.js": "/build/app.js",
+  "build/about.css": "/build/about.css",
   "build/about.js": "/build/about.js",
   "build/runtime.js": "/build/runtime.js",
-  "build/vendors-node_modules_jquery_dist_jquery_js.js": "/build/vendors-node_modules_jquery_dist_jquery_js.js",
-  "build/about.css": "/build/about.css"
+  "build/vendors-node_modules_jquery_dist_jquery_js.js": "/build/vendors-node_modules_jquery_dist_jquery_js.js"
 }

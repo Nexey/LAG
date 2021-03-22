@@ -1,4 +1,4 @@
-<footer class="text-center p-3 bg-light">
-    <a href="mailto:reclamation@m2gi.fr?subject=À propos de {{ app.request.uri }}">À propos</a>
+<footer class="text-center p-3 bg-light mt-5">
+    {% if app.request.pathinfo != '/about' %}<a href="/about">À propos</a>{% endif %}
     <p>Copyright © 2021 BAUQUE Geoffrey, CONRAD Alexandre et DAVIES Liam</p>
 </footer>

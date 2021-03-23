@@ -22,20 +22,23 @@
     * Il faut ensuite exécuter une commande avec le client Symfony qui démarre un serveur général (pas seulement limité à Symfony) :
         * ```console
           cd path/to/your/project
-          symfony server:start
+          symfony server:start --no-tls
           ```
 
 * (Recommandé) Configurez votre php.ini
-    * Rajoutez les 3 lignes suivantes à votre php.ini :
+    * Décommentez et activez les 3 lignes suivantes de votre php.ini :
         * ```php
           zend_extension=php_opcache.dll
           opcache.enable=On
           opcache.enable_cli=On
           ```
-    * Changez la valeur de realpath_size :
-        * ```php
-          realpath_cache_size = 5M
-          ```
+    * Changez la valeur de realpath_size, memory_limit, max_execution_time et max_input_time :
+        *   ```php
+            realpath_cache_size = 5M
+            memory_limit = -1
+            max_input_time = 120
+            max_execution_time = 300
+            ```
     * Notes : Si vous utilisez Wamp, référez-vous à la documentation pour trouver le bon fichier php.ini
 * Vérifiez les dépendances de Symfony :
     * ```symfony

@@ -7,7 +7,7 @@
     <div class="collapse navbar-collapse" id="navbarNav">
         {% block navbar %}
             <ul class="navbar-nav">
-                <li class="nav-item"><a class="nav-link {% if app.request.pathinfo == '/' %}active{% endif %}" href="/">Accueil</a></li>
+                {% if app.request.pathinfo != '/' %}<li class="nav-item"><a class="nav-link {% if app.request.pathinfo == '/' %}active{% endif %}" href="/">Accueil</a></li>{% endif %}
                 {% if app.user %}
                     <li lass="nav-item"><a class="nav-link {% if app.request.pathinfo == '/logout' %}active{% endif %}" href="/logout">Déconnexion</a></li>
                 {% else %}

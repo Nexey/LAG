@@ -1,15 +1,18 @@
 {% extends 'base.html.twig' %}
 
-{% block stylesheets %}
-    {{ parent() }}
-
-    <link href="{{ asset('styles/gamme_styles.css') }}" rel="stylesheet">
-{% endblock %}
-
 {% block title %} {{ gamme.getNom() | title }}{% endblock %}
 
 {% block body %}
 
+{% block stylesheets %}
+    {{parent()}}
+    {{ encore_entry_link_tags('gamme_styles') }}
+{% endblock %}
+
+{% block javascripts %}
+    {{parent()}}
+    {{ encore_entry_script_tags('gamme_styles') }}
+{% endblock %}
 <form action="{{ path("calcul_prix_achat_et_benefices", {nom_gamme: app.request.get('nom_gamme')}) }}" method="POST">
 
     {% for fourniture in fournitures %}

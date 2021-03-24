@@ -1,13 +1,37 @@
-{% extends 'base.html.twig' %}
-
-{% block title %}Hello HomePageController!{% endblock %}
-
-{% block body %}
-    <div class="container" style="text-align: center">
-        <h1>Bienvenue sur l'application F & BC - RENTAB</h1>
-        <p>Le but de cette application est de calculer la rentabilité de nos différentes gammes de produits</p>
-        <p>Pour vous rendre sur la page de calcul de bénéfice de chacune de nos gammes de produits, <a href="#">cliquez ici</a>.</p>
-        <p>Elle permet également de visualiser les prix maximum autorisés pour faire du bénéfice sur nos différentes gammes</p>
-        <p>Pour vous rendre sur la page de calcul des prix maximum pour être rentable, <a href="/rentabilite">cliquez ici</a>.</p>
-    </div>
+{% extends 'base.html.twig' %} {% block title %}Hello HomePageController!{%
+endblock %} {% block body %}
+<div class="container" style="text-align: center">
+  <h1>Bienvenue sur l'application F & BC - RENTAB</h1>
+  <p>
+    Le but de cette application est de calculer la rentabilité de nos
+    différentes gammes de produits
+  </p>
+  <p>
+    Elle permet également de visualiser les prix maximum autorisés pour faire du
+    bénéfice sur nos différentes gammes
+  </p>
+  <p>
+    Pour vous rendre sur la page de calcul des prix maximum pour être rentable,
+    <a href="/rentabilite">cliquez ici</a>.
+  </p>
+  <p>
+    Vous pouvez vous rendre sur la page de calcul de bénéfice de chacune de nos
+    gammes de produits à partir des liens suivants :
+  </p>
+  <ul style="list-style-type: none">
+    <li>
+      <a
+        href="{{
+          path('index_gamme', { nom_gamme: 'carton et bouts de ficelle' })
+        }}"
+        >GAMME FICELLES ET BOUTS DE CARTON</a
+      >
+    </li>
+    <li>
+      <a href="{{ path('index_gamme', { nom_gamme: 'emballages' }) }}"
+        >GAMME EMBALLAGES</a
+      >
+    </li>
+  </ul>
+</div>
 {% endblock %}

@@ -4,53 +4,76 @@
 
 {% block body %}
 
-{% block stylesheets %}
-    {{parent()}}
-    {{ encore_entry_link_tags('gamme_styles') }}
-{% endblock %}
+    {% block stylesheets %}
+        {{ parent() }}
+        {{ encore_entry_link_tags('gamme_styles') }}
+    {% endblock %}
 
-{% block javascripts %}
-    {{parent()}}
-    {{ encore_entry_script_tags('gamme_styles') }}
-{% endblock %}
-<form action="{{ path("calcul_prix_achat_et_benefices", {nom_gamme: app.request.get('nom_gamme')}) }}" method="POST">
-
-    {% for fourniture in fournitures %}
-            <label for="name">Prix d'achat unitaire de : {{fourniture.getNom()}}</label>
-            <input type="number" name="nouveau_prix" id={{fourniture.getNom()}} step="0.01" value={{fourniture.getPrixActuel()|default(null)}} {{fourniture.getPrixDepart() ? 'disabled' : ''}}>
-        {% endfor %}
+    {% block javascripts %}
+        {{ parent() }}
+        {{ encore_entry_script_tags('gamme_styles') }}
+    {% endblock %}
     
-    <input type="submit" value="Calculer les prix d'achats et les bénéfices par produit">
-</form>
+    <div class="center">
+        <div class="d-flex justify-content-center">
+            <form action="{{ path("calcul_prix_achat_et_benefices", {nom_gamme: app.request.get('nom_gamme')}) }}" method="POST">
 
-<span><p>Trier par </p></span>
-<a href="{{ path('index_gamme', {'order_by': 'nom', 'nom_gamme': app.request.get('nom_gamme') }) }}">NOM</a>
-<a href="{{ path('index_gamme', {'order_by': 'benefice', 'nom_gamme': app.request.get('nom_gamme') }) }}">BENEFICE</a>
+                {% for fourniture in fournitures %}
+                    <label for="name">Prix d'achat unitaire de : {{fourniture.getNom()}}</label>
+                    <input class="form-control w-75" type="number" name="nouveau_prix" id={{fourniture.getNom()}} 
+                    step="0.01" value={{fourniture.getPrixActuel()|default(null)}} {{fourniture.getPrixDepart() ? 'disabled' : ''}}>
+                    <br/>
+                {% endfor %}
+                
+                <input type="submit" class="btn btn-primary" value="Calculer les prix d'achats et les bénéfices par produit">
+            </form>
+        </div>
 
-<div class="example-wrapper">
-    <h1>{{ gamme.getNom() | capitalize }}</h1>
+        <div class="example-wrapper">
+            <form action="{{ path("index_gamme", {'nom_gamme': app.request.get('nom_gamme')}) }}">
+                <p>
+                    Sélectionner les produits
+                    <select class="form-control w-50" name="produits_ids[]" multiple>
+                        {% for produit in listeProduits %}
+                            <option value={{produit.getId()}}>{{produit.getNom()}}</option>
+                        {% endfor %}
+                    </select>
+                </p>
 
-    <table id="products">
-        <thead>
-            <tr>
-                <th>Nom</th>
-                <th>Prix d'achat</th>
-                <th>Prix de vente</th>
-                <th>Bénéfice</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for produit in produits %}
-            <tr>
-                <td>{{ produit.getNom() }}</td>
-                <td>{{ produit.getPrixAchat() |default(" - ")}}€</td>
-                <td>{{ produit.getPrixVente() }}</td>
-                <td>{{ produit.getBenefice()|default(" - ")}}€</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-        
-    </table>
+                <input type="submit" class="btn btn-primary" value="Afficher les produits sélectionnés">
+            </form>
 
-</div>
+            <div style="display: flex; justify-content: space-between">
+                <h1>{{ gamme.getNom() | capitalize }}</h1> 
+                <div style="display: flex; align-self: end">
+                    <p style="margin-right: 20px">Trier par :</p>
+                    <a style="margin-right: 20px" href="{{ path('index_gamme', {'order_by': 'nom', 'nom_gamme': app.request.get('nom_gamme') }) }}">NOM</a>
+                    <a style="margin-right: 20px" href="{{ path('index_gamme', {'order_by': 'benefice', 'nom_gamme': app.request.get('nom_gamme') }) }}">BENEFICE</a>
+                </div>   
+            </div>
+
+            <table id="products">
+                <thead>
+                    <tr>
+                        <th>Nom</th>
+                        <th>Prix d'achat</th>
+                        <th>Prix de vente</th>
+                        <th>Bénéfice</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for produit in produits %}
+                        <tr>
+                            <td>{{ produit.getNom() }}</td>
+                            <td>{{ produit.getPrixAchat() |default(" - ")}}€</td>
+                            <td>{{ produit.getPrixVente() }}</td>
+                            <td>{{ produit.getBenefice()|default(" - ")}}€</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+                
+            </table>
+
+        </div>
+    </div>
 {% endblock %}

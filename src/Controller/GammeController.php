@@ -26,7 +26,12 @@ class GammeController extends AbstractController
         }
 
         /*On récupère les produits*/
-        $produits = $entityManager->getRepository(Produit::class)->findBy(['gamme' => $gamme->getId()], $request->query->get('order_by') ? [$request->query->get('order_by') => 'ASC'] : null);
+        if ($request->query->get('produits_ids')) {
+            $produits = $entityManager->getRepository(Produit::class)->findBy(['id' => $request->query->get('produits_ids')], $request->query->get('order_by') ? [$request->query->get('order_by') => 'ASC'] : null);
+        } else {
+            $produits = $entityManager->getRepository(Produit::class)->findBy(['gamme' => $gamme->getId()], $request->query->get('order_by') ? [$request->query->get('order_by') => 'ASC'] : null);
+        }
+        $listeProduits = $entityManager->getRepository(Produit::class)->findBy(['gamme' => $gamme->getId()]);
         if (!$produits) {
             throw $this->createNotFoundException('Pas de produits trouvés');
         }
@@ -43,18 +48,29 @@ class GammeController extends AbstractController
         return $this->render('gamme/index.html.twig', [
             'gamme' => $gamme,
             'produits' => $produits,
+            'listeProduits' => $listeProduits,
             'fournitures' => $fournitures
         ]);
     }
+
 
     /**
      * @Route("/gamme/{nom_gamme}", name="calcul_prix_achat_et_benefices", methods={"POST"})
      */
     public function calculPrixAchatEtBenefices(Request $request): Response
     {
-        /*On va tout d'abord modifier la valeur prix_actuel dans la colonne de la fourniture voulue*/
         $entityManager = $this->getDoctrine()->getManager();
-        $fourniture = $entityManager->getRepository(Fourniture::class)->findOneBy(['nom' => $request->attributes->get('nom_gamme')]);
+        $gamme = $entityManager->getRepository(Gamme::class)->findOneBy(['nom' => $request->attributes->get('nom_gamme')]);
+        $produit_fournitures = $gamme->getProduits()[0]->getProduitFournitures();
+        $fourniture = null;
+
+        foreach ($produit_fournitures as $prodfourn) {
+            if (!$prodfourn->getFourniture()->getPrixDepart()) {
+                $fourniture = $prodfourn->getFourniture();
+            }
+        }
+
+        /*On va tout d'abord modifier la valeur prix_actuel dans la colonne de la fourniture voulue*/
 
         if (!$fourniture) {
             throw $this->createNotFoundException('Pas de fourniture trouvée');
@@ -71,12 +87,22 @@ class GammeController extends AbstractController
 
         $gamme = $entityManager->getRepository(Gamme::class)->findOneBy(['nom' => $request->attributes->get('nom_gamme')]);
         $produits = $this->setPrixAchatEtBenefice($gamme->getProduits());
+        $listeProduits = $entityManager->getRepository(Produit::class)->findBy(['gamme' => $gamme->getId()]);
+        $fournitures = array_map(function ($obj) {
+            return $obj->getFourniture();
+        }, $gamme->getProduits()[0]->getProduitFournitures()->toArray());
+
+        if (!$fournitures) {
+            throw $this->createNotFoundException('Pas de fournitures trouvées');
+        }
+
         $entityManager->flush();
 
         return $this->render('gamme/index.html.twig', [
             'gamme' => $gamme,
             'produits' => $produits,
-            'fourniture' => $fourniture
+            'listeProduits' => $listeProduits,
+            'fournitures' => $fournitures
         ]);
     }
 

@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+
+    <link href="{{ asset('styles/gamme_styles.css') }}" rel="stylesheet">
+{% endblock %}
+
+{% block title %} {{ gamme.getNom() | title }}{% endblock %}
+
+{% block body %}
+
+<form action="{{ path("calcul_prix_achat_et_benefices", {nom_gamme: app.request.get('nom_gamme')}) }}" method="POST">
+
+    {% for fourniture in fournitures %}
+            <label for="name">Prix d'achat unitaire de : {{fourniture.getNom()}}</label>
+            <input type="number" name="nouveau_prix" id={{fourniture.getNom()}} step="0.01" value={{fourniture.getPrixActuel()|default(null)}} {{fourniture.getPrixDepart() ? 'disabled' : ''}}>
+        {% endfor %}
+    
+    <input type="submit" value="Calculer les prix d'achats et les bénéfices par produit">
+</form>
+
+<span><p>Trier par </p></span>
+<a href="{{ path('index_gamme', {'order_by': 'nom', 'nom_gamme': app.request.get('nom_gamme') }) }}">NOM</a>
+<a href="{{ path('index_gamme', {'order_by': 'benefice', 'nom_gamme': app.request.get('nom_gamme') }) }}">BENEFICE</a>
+
+<div class="example-wrapper">
+    <h1>{{ gamme.getNom() | capitalize }}</h1>
+
+    <table id="products">
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Prix d'achat</th>
+                <th>Prix de vente</th>
+                <th>Bénéfice</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for produit in produits %}
+            <tr>
+                <td>{{ produit.getNom() }}</td>
+                <td>{{ produit.getPrixAchat() |default(" - ")}}€</td>
+                <td>{{ produit.getPrixVente() }}</td>
+                <td>{{ produit.getBenefice()|default(" - ")}}€</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+        
+    </table>
+
+</div>
+{% endblock %}

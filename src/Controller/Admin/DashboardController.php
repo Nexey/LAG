@@ -37,25 +37,27 @@ class DashboardController extends AbstractDashboardController
 
     public function configureMenuItems(): iterable
     {
+        if (!isset($_GET["crudControllerFqcn"]))
+            $_GET["crudControllerFqcn"] = "";
         return [
             MenuItem::linkToDashboard('Configuration', 'fas fa-wrench'),
             MenuItem::linkToRoute("Home Page", "fa fa-home", "home_page"),
 
             MenuItem::section('Gestion des rôles'),
-            MenuItem::linkToCrud('Utilisateurs', 'fa fa-user', User::class),
+            MenuItem::linkToCrud('Utilisateurs', str_contains($_GET["crudControllerFqcn"], "User")?'far fa-user':'fa fa-user', User::class),
 
             MenuItem::section('Gestion des fournitures'),
             MenuItem::linkToCrud('Fournitures', 'fas fa-couch', Fourniture::class),
 
             MenuItem::section('Gestion des gammes'),
-            MenuItem::linkToCrud('Gammes', 'fa fa-user', Gamme::class),
+            MenuItem::linkToCrud('Gammes', str_contains($_GET["crudControllerFqcn"], "Gamme")?'fas fa-folder-open':'fas fa-folder', Gamme::class),
 
             MenuItem::section('Gestion des produits'),
-            MenuItem::linkToCrud('Produits', 'fa fa-user', Produit::class),
+            MenuItem::linkToCrud('Produits', 'fas fa-cube', Produit::class),
 
-            MenuItem::section('Gestion des produits / fournitures'),
-            MenuItem::linkToCrud('Produits et fournitures', 'fa fa-user', ProduitFourniture::class),
+            MenuItem::section('Gestion des compositions'),
+            MenuItem::linkToCrud('Compositions', 'fas fa-puzzle-piece', ProduitFourniture::class),
         ];
-        // yield MenuItem::linkToCrud('The Label', 'fas fa-list', EntityClass::class);
+
     }
 }

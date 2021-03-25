@@ -4,6 +4,9 @@ namespace App\Controller\Admin;
 
 use App\Entity\ProduitFourniture;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
+use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\NumberField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 
 class ProduitFournitureCrudController extends AbstractCrudController
 {
@@ -12,14 +15,14 @@ class ProduitFournitureCrudController extends AbstractCrudController
         return ProduitFourniture::class;
     }
 
-    /*
+    //*
     public function configureFields(string $pageName): iterable
     {
         return [
-            IdField::new('id'),
-            TextField::new('title'),
-            TextEditorField::new('description'),
+            TextField::new("produit"),
+            TextField::new("fourniture"),
+            NumberField::new("nb_fourniture"),
         ];
     }
-    */
+    //*/
 }

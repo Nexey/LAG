@@ -4,5 +4,31 @@
 
 {% block body %}
 
-    <h1>Register</h1>
+    <h1>Prix maximum de rentabilité</h1>
+
+    <p>
+        Prix d'achat des ficelles :
+        <input type="number" name="ficelles" disabled value="{{prixFicelles}}">
+        Prix d'achat des rubans :
+        <input type="number" name="rubans" disabled value="{{prixRubans}}">
+        Prix d'achat des étiquettes :
+        <input type="number" name="etiquettes" disabled value="{{prixEtiquettes}}">
+    </p>
+
+    {% for gamme in gammes %}
+        <h2>Gamme "{{gamme.nom}}"</h1>
+        <table>
+            <tr>
+                <td>Nom du produit</td>
+                <td>Prix d'achat maximum des {{nomProduitManquantGamme[gamme.nom]}}</td>
+            </tr>
+            {% for produit in produits[gamme.nom] %}
+            <tr>
+                <td>{{produit.nom}}</td>
+                <td>{{prixFournitures[gamme.nom][produit.nom]}}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    {% endfor %}
+
 {% endblock %}

@@ -50,7 +50,7 @@ class RentabilitePageController extends AbstractController
             foreach ($produit->getProduitFournitures() as &$produitFourniture) {
 
                 // Si c'est la fourniture manquante, on met une référence de côté
-                if ( $produitFourniture->getFourniture()->getPrixActuel() == null ) $produitFournitureManquant = $produitFourniture;
+                if ($produitFourniture->getFourniture()->getPrixDepart() == null) $produitFournitureManquant = $produitFourniture;
 
                 // Sinon on ajoute le prix de la fourniture * son nombre au prix total
                 else $prixFournituresTotal += $produitFourniture->getFourniture()->getPrixActuel() * $produitFourniture->getNbFourniture();

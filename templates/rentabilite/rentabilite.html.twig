@@ -4,31 +4,47 @@
 
 {% block body %}
 
-    <h1>Prix maximum de rentabilité</h1>
+    {% block stylesheets %}
+        {{ parent() }}
+        {{ encore_entry_link_tags('gamme_styles') }}
+    {% endblock %}
 
-    <p>
-        Prix d'achat des ficelles :
-        <input type="number" name="ficelles" disabled value="{{prixFicelles}}">
-        Prix d'achat des rubans :
-        <input type="number" name="rubans" disabled value="{{prixRubans}}">
-        Prix d'achat des étiquettes :
-        <input type="number" name="etiquettes" disabled value="{{prixEtiquettes}}">
-    </p>
+    {% block javascripts %}
+        {{ parent() }}
+        {{ encore_entry_script_tags('gamme_styles') }}
+    {% endblock %}
 
-    {% for gamme in gammes %}
-        <h2>Gamme "{{gamme.nom}}"</h1>
-        <table>
-            <tr>
-                <td>Nom du produit</td>
-                <td>Prix d'achat maximum des {{nomProduitManquantGamme[gamme.nom]}}</td>
-            </tr>
-            {% for produit in produits[gamme.nom] %}
-            <tr>
-                <td>{{produit.nom}}</td>
-                <td>{{prixFournitures[gamme.nom][produit.nom]}}</td>
-            </tr>
-            {% endfor %}
-        </table>
-    {% endfor %}
+    <div class="example-wrapper">
 
+        <h1>Prix maximum de rentabilité</h1>
+
+        <p>
+            Prix d'achat des ficelles :
+            <input class="form-control w-75" type="number" name="ficelles" disabled value="{{prixFicelles}}">
+            Prix d'achat des rubans :
+            <input class="form-control w-75" type="number" name="rubans" disabled value="{{prixRubans}}">
+            Prix d'achat des étiquettes :
+            <input class="form-control w-75" type="number" name="etiquettes" disabled value="{{prixEtiquettes}}">
+        </p>
+
+        {% for gamme in gammes %}
+            <h2>Gamme "{{gamme.nom}}"</h1>
+                <table class="table table-hover">
+                    <thead class="thead-dark">
+                        <tr>
+                        <th>Nom du produit</th>
+                        <th>Prix d'achat maximum des {{nomProduitManquantGamme[gamme.nom]}}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for produit in produits[gamme.nom] %}
+                    <tr>
+                        <td>{{produit.nom}}</td>
+                        <td>{{prixFournitures[gamme.nom][produit.nom]}}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% endfor %}
+    </div>
 {% endblock %}

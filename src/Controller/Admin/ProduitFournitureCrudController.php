@@ -19,8 +19,8 @@ class ProduitFournitureCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         return [
-            TextField::new("produit"),
-            TextField::new("fourniture"),
+            TextField::new("produit")->onlyOnIndex(),
+            TextField::new("fourniture")->onlyOnIndex(),
             NumberField::new("nb_fourniture"),
         ];
     }

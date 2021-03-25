@@ -46,7 +46,7 @@ class Fourniture
 
     public function __toString(): string
     {
-        return $this->getNom();
+        return ucfirst($this->getNom());
     }
 
     public function getId(): ?int

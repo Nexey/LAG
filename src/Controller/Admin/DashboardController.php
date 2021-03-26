@@ -41,7 +41,8 @@ class DashboardController extends AbstractDashboardController
             $_GET["crudControllerFqcn"] = "";
         return [
             MenuItem::linkToDashboard('Configuration', 'fas fa-wrench'),
-            MenuItem::linkToRoute("Home Page", "fa fa-home", "home_page"),
+            MenuItem::linkToUrl("Home Page", "fa fa-home", "/"),
+            MenuItem::linkToUrl("À propos", "fas fa-question", "/about"),
 
             MenuItem::section('Gestion des rôles'),
             MenuItem::linkToCrud('Utilisateurs', str_contains($_GET["crudControllerFqcn"], "User")?'far fa-user':'fas fa-user', User::class),
@@ -57,6 +58,7 @@ class DashboardController extends AbstractDashboardController
 
             MenuItem::section('Gestion des compositions'),
             MenuItem::linkToCrud('Compositions', 'fas fa-puzzle-piece', ProduitFourniture::class),
+
         ];
 
     }

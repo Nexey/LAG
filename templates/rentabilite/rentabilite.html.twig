@@ -39,8 +39,8 @@
                 <tbody>
                     {% for produit in produits[gamme.nom] %}
                     <tr>
-                        <td>{{produit.nom}}</td>
-                        <td>{{prixFournitures[gamme.nom][produit.nom]}}</td>
+                        <td>{{produit.produit.nom}}</td>
+                        <td>{{produit.prix | number_format(2, '.', ' ')}}</td>
                     </tr>
                     {% endfor %}
                 </tbody>

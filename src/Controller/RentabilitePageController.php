@@ -22,7 +22,6 @@ class RentabilitePageController extends AbstractController
     {
         $gammes = $gammeRepository->findAll(); // Liste des gammes
         $produits = array(); // Liste des produits
-        $prixFournitures = array(); // Liste des prix max d'achat de la fourniture manquante pour chaque produit
         $nomProduitManquantGamme = array(); // Nom de la fourniture manquante pour chaque gamme
 
         // Pour chaque produit dans la base de données
@@ -31,10 +30,6 @@ class RentabilitePageController extends AbstractController
             // Les produits sont triés par gamme, on vérifie que la clé "gamme" existe dans le tableau, sinon on la crée
             if (!array_key_exists($produit->getGamme()->getNom(), $produits))
                 $produits[$produit->getGamme()->getNom()] = array();
-
-            // Les prix des fournitures sont triés par gamme, on vérifie que la clé "gamme" existe dans le tableau, sinon on la crée
-            if (!array_key_exists($produit->getGamme()->getNom(), $prixFournitures))
-                $prixFournitures[$produit->getGamme()->getNom()] = array();
 
             // Les noms des fournitures manquantes sont triés par gamme, on vérifie que la clé "gamme" existe dans le tableau, sinon on la crée
             if (!array_key_exists($produit->getGamme()->getNom(), $nomProduitManquantGamme))
@@ -56,20 +51,24 @@ class RentabilitePageController extends AbstractController
                 else $prixFournituresTotal += $produitFourniture->getFourniture()->getPrixActuel() * $produitFourniture->getNbFourniture();
             }
 
-            // On ajoute le produit dans la liste
-            array_push($produits[$produit->getGamme()->getNom()], $produit);
-
             // Marge possible sur le produit ( sans la fourniture manquante )
             $prixTotal = $produit->getPrixVente() - $prixFournituresTotal;
 
             // Prix max auquel acheté la fourniture manquante
             $prixAchatFournitureManquantMax = $prixTotal / $produitFournitureManquant->getNbFourniture();
 
-            // On ajoute le prix max dans la liste
-            $prixFournitures[$produit->getGamme()->getNom()][$produit->getNom()] = $prixAchatFournitureManquantMax;
-
             // On ajoute le nom de la fourniture manquante dans la liste
             $nomProduitManquantGamme[$produit->getGamme()->getNom()] = $produitFournitureManquant->getFourniture()->getNom();
+
+            // On ajoute le produit dans la liste
+            array_push($produits[$produit->getGamme()->getNom()], array('produit' => $produit, 'prix' => $prixAchatFournitureManquantMax));
+        }
+
+        //Fonction de trie
+        foreach ($produits as $key => $value) {
+            usort($produits[$key], function ($item1, $item2) {
+                return $item2['prix'] <=> $item1['prix'];
+            });
         }
 
         $prixFicelles = $fournitureRepository->findOneBy(array('id' => 1))->getPrixActuel();
@@ -81,7 +80,6 @@ class RentabilitePageController extends AbstractController
             [
                 'gammes' => $gammes,
                 'produits' => $produits,
-                'prixFournitures' => $prixFournitures,
                 'prixEtiquettes' => $prixEtiquettes,
                 'prixRubans' => $prixRubans,
                 'prixFicelles' => $prixFicelles,

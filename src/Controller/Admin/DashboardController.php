@@ -44,7 +44,7 @@ class DashboardController extends AbstractDashboardController
             MenuItem::linkToRoute("Home Page", "fa fa-home", "home_page"),
 
             MenuItem::section('Gestion des rôles'),
-            MenuItem::linkToCrud('Utilisateurs', str_contains($_GET["crudControllerFqcn"], "User")?'far fa-user':'fa fa-user', User::class),
+            MenuItem::linkToCrud('Utilisateurs', str_contains($_GET["crudControllerFqcn"], "User")?'far fa-user':'fas fa-user', User::class),
 
             MenuItem::section('Gestion des fournitures'),
             MenuItem::linkToCrud('Fournitures', 'fas fa-couch', Fourniture::class),

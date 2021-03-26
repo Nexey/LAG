@@ -31,10 +31,14 @@ class GammeController extends AbstractController
         } else {
             $produits = $entityManager->getRepository(Produit::class)->findBy(['gamme' => $gamme->getId()], $request->query->get('order_by') ? [$request->query->get('order_by') => 'ASC'] : null);
         }
+
         $listeProduits = $entityManager->getRepository(Produit::class)->findBy(['gamme' => $gamme->getId()]);
+
         if (!$produits) {
             throw $this->createNotFoundException('Pas de produits trouvés');
         }
+
+        $produitsComposition = $this->getProduitsComposition($produits);
 
         /*On récupère les fournitures*/
         $fournitures = array_map(function ($obj) {
@@ -49,6 +53,7 @@ class GammeController extends AbstractController
             'gamme' => $gamme,
             'produits' => $produits,
             'listeProduits' => $listeProduits,
+            'produitsComposition' => $produitsComposition,
             'fournitures' => $fournitures
         ]);
     }
@@ -98,10 +103,13 @@ class GammeController extends AbstractController
 
         $entityManager->flush();
 
+        $produitsComposition = $this->getProduitsComposition($produits);
+
         return $this->render('gamme/index.html.twig', [
             'gamme' => $gamme,
             'produits' => $produits,
             'listeProduits' => $listeProduits,
+            'produitsComposition' => $produitsComposition,
             'fournitures' => $fournitures
         ]);
     }
@@ -119,5 +127,25 @@ class GammeController extends AbstractController
         }
 
         return $produits;
+    }
+
+    private function getProduitsComposition($produits)
+    {
+        $produitsComposition = array();
+
+        foreach ($produits as $produit) {
+            $compositionArray = array();
+            if (!array_key_exists($produit->getNom(), $produitsComposition)) {
+                $produitsComposition[$produit->getNom()] = array();
+            }
+            foreach ($produit->getProduitFournitures() as $prodComposition) {
+                $tempString = '';
+                $tempString = $prodComposition->getNbFourniture() . ' x ' . $prodComposition->getFourniture()->getNom();
+                array_push($compositionArray, $tempString);
+            }
+            $produitsComposition[$produit->getNom()] = $compositionArray;
+        }
+
+        return $produitsComposition;
     }
 }

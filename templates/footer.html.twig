@@ -1,4 +1,13 @@
 <footer class="text-center p-3 bg-light mt-5">
-    {% if app.request.pathinfo != '/about' %}<a href="/about">À propos</a>{% endif %}
-    <p>Copyright © 2021 BAUQUE Geoffrey, CONRAD Alexandre et DAVIES Liam</p>
+  {% if app.request.pathinfo != '/about' %}<a href="/about">À propos</a>{% endif
+  %}
+  <p>Copyright © 2021 BAUQUE Geoffrey, CONRAD Alexandre et DAVIES Liam</p>
+  <div class="container" style="text-align: center">
+    <a
+      href="mailto:reclamation@m2gi.fr?subject=À propos de {{
+        app.request.uri
+      }}"
+      >Signaler un bug</a
+    >
+  </div>
 </footer>

@@ -1,24 +1,16 @@
-{% extends 'base.html.twig' %}
+{% extends 'base.html.twig' %} {% block title %}Hello HomePageController!{%
+endblock %} {% block body %}
 
-{% block title %}Hello HomePageController!{% endblock %}
+<div class="container" style="text-align: center; padding: 20px">
+  <h2>Projet de Symfony</h2>
+  <p>Projet de complément Génie Logiciel</p>
 
-{% block body %}
-    <div class="container" style="text-align: center">
-        <a href="mailto:reclamation@m2gi.fr?subject=À propos de {{ app.request.uri }}">Envoyer un mail</a>
-    </div>
+  <h2>Membres du groupe</h2>
 
-    <div class="container" style="text-align: center;padding: 20px">
-        <h2>Projet de Symfony</h2>
-        <p>Projet de complément Génie informatique</p>
+  Liam Davies, Alexandre Conrad et Geoffrey Bauqué
 
-        <h2>Membre du groupe</h2>
-
-            Liam Davies,
-            Alexandre Conrad et
-            Geoffrey Bauqué
-
-        <h2>Documentations et lien GIT</h2>
-        <a href="https://github.com/Nexey/LAG">Documentations</a>
-      </div>
+  <h2>Documentations et lien GIT</h2>
+  <a href="https://github.com/Nexey/LAG">Documentations</a>
+</div>
 
 {% endblock %}

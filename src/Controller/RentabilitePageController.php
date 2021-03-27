@@ -67,7 +67,7 @@ class RentabilitePageController extends AbstractController
         //Fonction de trie
         foreach ($produits as $key => $value) {
             usort($produits[$key], function ($item1, $item2) {
-                return $item2['prix'] <=> $item1['prix'];
+                return $item1['prix'] <=> $item2['prix'];
             });
         }
 
